@@ -81,7 +81,7 @@ variable "POP_SUBNET_B_LONDON" {
 }
 
 variable "DIYCDN_POP_SG" {
-default = "terraform-20210919154732231800000001"
+default = "sg-0e0077d480c8fe341"
 }
 
 variable "DIYCDN_POP_SG_NAME" {
