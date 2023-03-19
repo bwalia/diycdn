@@ -29,7 +29,7 @@ resource "aws_instance" "cdn-pop-london-a" {
   availability_zone = var.AVAILABILITY_ZONE_A
 
   associate_public_ip_address = lookup(var.ec2_setup, "publicip")
-  key_name = "nginx_openresty_london"
+  key_name = "cdn_london_keypair"
 
   vpc_security_group_ids = [var.DIYCDN_POP_SG]
 
@@ -144,7 +144,7 @@ resource "aws_instance" "cdn-pop-london-b" {
   instance_type = var.INSTANCE_TYPE
   availability_zone = var.AVAILABILITY_ZONE_B
   associate_public_ip_address = lookup(var.ec2_setup, "publicip")
-  key_name = "nginx_openresty_london"
+  key_name = "cdn_london_keypair"
 
   vpc_security_group_ids = [var.DIYCDN_POP_SG]
 
@@ -257,15 +257,15 @@ output "ec2_b_public_dns" {
 #   value = [for s in data.aws_subnet.london_subnet : s.cidr_block]
 # }
 
-data "aws_key_pair" "nginx_openresty_london" {
-  key_name = "nginx_openresty_london"
+data "aws_key_pair" "cdn_london_keypair" {
+  key_name = "cdn_london_keypair"
   include_public_key = true
   #public_key = file(var.PUBLIC_KEY_PATH)
 }
 
 
 # data "aws_key_pair" "pop_key_pair_preset" {
-#   key_name           = "nginx_openresty_london"
+#   key_name           = "cdn_london_keypair"
 #   include_public_key = true
 
 #   #filter {
@@ -275,14 +275,14 @@ data "aws_key_pair" "nginx_openresty_london" {
 # }
 
 # output "fingerprint" {
-#   value = data.aws_key_pair.nginx_openresty_london.fingerprint
+#   value = data.aws_key_pair.cdn_london_keypair.fingerprint
 # }
 
 # output "name" {
-#   value = data.aws_key_pair.nginx_openresty_london.key_name
+#   value = data.aws_key_pair.cdn_london_keypair.key_name
 # }
 
 # output "id" {
-#   value = data.aws_key_pair.nginx_openresty_london.id
+#   value = data.aws_key_pair.cdn_london_keypair.id
 # }
 

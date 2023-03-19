@@ -72,7 +72,7 @@ fi
 
 if [ -z ${POP_STATE_BUCKET} ];
 then
-  POP_STATE_BUCKET="syn-cloud-tf-state"
+  POP_STATE_BUCKET="cdn-cloud-tf-state"
 fi
 
 if [ -z "$3" ];

@@ -62,7 +62,7 @@ fi
 
 #echo 
 # export PATH=$PATH:/Users/balinderwalia/Documents/Work/4D/4Dv18_Applications/aws/Resources/kube/
-# docker run -v "~/.ssh/:/root/.ssh/ -v "~/.aws/:/root/.aws/" -e "POP_ENV=test" -e "POP_ACTION=create" -e "POP_STATE_BUCKET=syn-cloud-tf-state" -e "AWS_PROFILE=default" -e "AWS_DEFAULT_REGION=eu-west-2 bwalia/tf-DiyCDN
+# docker run -v "~/.ssh/:/root/.ssh/ -v "~/.aws/:/root/.aws/" -e "POP_ENV=test" -e "POP_ACTION=create" -e "POP_STATE_BUCKET=cdn-cloud-tf-state" -e "AWS_PROFILE=default" -e "AWS_DEFAULT_REGION=eu-west-2 bwalia/tf-DiyCDN
 
 docker run \
 -e "AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}" \
@@ -72,7 +72,7 @@ docker run \
 -e "POP_ENV=test" \
 -e "PROJECT_ID=${PROJECT_ID}" \
 -e "POP_ACTION=${POP_ACTION}" \
--e "POP_STATE_BUCKET=syn-cloud-tf-state" \
+-e "POP_STATE_BUCKET=cdn-cloud-tf-state" \
 -e "AWS_PROFILE=default" \
 -e "AWS_DEFAULT_REGION=eu-west-2" \
 -v "AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}" \
@@ -82,6 +82,6 @@ docker run \
 -v "PROJECT_ID=${PROJECT_ID}" \
 -v "POP_ENV=test" \
 -v "POP_ACTION=${POP_ACTION}" \
--v "POP_STATE_BUCKET=syn-cloud-tf-state" \
+-v "POP_STATE_BUCKET=cdn-cloud-tf-state" \
 -v "AWS_PROFILE=default" \
 -v "AWS_DEFAULT_REGION=eu-west-2" $DOCKER_IMAGE_ID
