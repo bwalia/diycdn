@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Welcome to DiyCDN.cloud!</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	</head>
+<body>
+	
+	
+	<div class="bg-img1 overlay1" style="background-image: url('images/slider3.jpg');">
+		<div class="wrappic1 ">
+			<div class="row">
+				<div class="col-md-12">
+
+					<div class="logocentr">
+						<div class="logohdr">
+						<a href="#"><img src="images/logo.jpg" alt="logo"></a>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+
+		<section class="wrapper formblkmain pd80">
+		<div class="">
+			<div class="row">
+				<div class="col-md-12 col-sm-12">
+					<div class="welcomeblk">
+						<h3 class="l1-txt2  respon2 respon4">
+							Edgeone
+						</h3>
+						<p class="respon2  l1-txt1">
+							Fast, powerful, modern HTTP(S) server, designed for zero downtime deployments.
+						</p>
+					</div>
+					<div class="countrblk">
+						<div class="countmain">
+						<p id="days"></p></div>
+    <div class="countmain"><p id="hours"></p></div>
+    <div class="countmain"><p id="mins"></p></div>
+    <div class="countmain"><p id="secs"></p></div>
+    <h2 id="end"></h2>
+					</div>
+				</div> 
+
+				
+			
+
+			
+
+			</div>
+
+			
+		</div>
+	</section>
+</div>
+
+
+
+	
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	 <script>
+    // The data/time we want to countdown to
+    var countDownDate = new Date("Dec 31, 2021 14:59:59").getTime();
+
+    // Run myfunc every second
+    var myfunc = setInterval(function() {
+
+    var now = new Date().getTime();
+    var timeleft = countDownDate - now;
+        
+    // Calculating the days, hours, minutes and seconds left
+    var days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
+        
+    // Result is output to the specific element
+    document.getElementById("days").innerHTML = days + "d "
+    document.getElementById("hours").innerHTML = hours + "h " 
+    document.getElementById("mins").innerHTML = minutes + "m " 
+    document.getElementById("secs").innerHTML = seconds + "s " 
+        
+    // Display the message when countdown is over
+    if (timeleft < 0) {
+        clearInterval(myfunc);
+        document.getElementById("days").innerHTML = ""
+        document.getElementById("hours").innerHTML = "" 
+        document.getElementById("mins").innerHTML = ""
+        document.getElementById("secs").innerHTML = ""
+        document.getElementById("end").innerHTML = "TIME UP!!";
+    }
+    }, 1000);
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+[Unit]
+Description=The Go App Services Manager
+ConditionPathExists=/home/ec2-user/services
+After=network.target
+
+[Service]
+Type=simple
+
+Restart=on-failure
+RestartSec=10
+#startLimitIntervalSec=60
+
+WorkingDirectory=/home/ec2-user/
+ExecStart=/home/ec2-user/services --nodaemonize  --name=services-manager
+
+#ExecStopPost=/bin/rm -f /var/services-manager/services-manager.pid
+#ExecReload=/bin/kill -USR2 $MAINPID
+
+PermissionsStartOnly=true
+#ExecStartPre=/bin/mkdir -p /var/log/services-manager
+#ExecStartPre=/bin/chown syslog:adm /var/log/services-manager
+#ExecStartPre=/bin/chmod 755 /var/log/services-manager
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=services-manager
+
+
+[Install]
+WantedBy=multi-user.target

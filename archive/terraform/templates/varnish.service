@@ -1,0 +1,43 @@
+# Unit file for OpenResty
+# A modification of the Nginx systemd script. Tested working on Centos 7/8 and Amazon Linux 2 26 July 2021
+# Source: Tenthmatrix.co.uk
+# =======================
+#
+[Unit]
+Description=Varnish Cache, a high-performance HTTP accelerator
+After=network-online.target
+#Before=varnish_exporter.service
+#Bal removed this 21 May 2021 Conflicts=openresty.service
+#Conflicts=nginx-docker.service
+
+[Service]
+Type=forking
+KillMode=process
+
+# Maximum number of open files (for ulimit -n)
+LimitNOFILE=131072
+
+# Locked shared memory - should suffice to lock the shared memory log
+# (varnishd -l argument)
+# Default log size is 80MB vsl + 1M vsm + header -> 82MB
+# unit is bytes
+LimitMEMLOCK=85983232
+
+# Enable this to avoid "fork failed" on reload.
+TasksMax=infinity
+
+# Maximum size of the corefile.
+LimitCORE=infinity
+
+ExecStopPost=/bin/rm -f /var/varnish/varnish.pid
+#VarnishPIDFile=/var/varnish/varnish.pid
+ExecStart=/usr/local/sbin/varnishd -P /var/varnish/varnish.pid -j unix,user=ec2-user -a varnish=/var/run/varnish/varnish.sock -a 0.0.0.0:81 -f /opt/varnish/conf/default.vcl -s malloc,1024m
+#-S /opt/varnish/secret   /usr/local/varnish/bin/varnishd/varnishd -a :81 -f /opt/varnish/conf/default.vcl -s file,{{ cdn_cache_location }},{{ ( ( cdn_cache_size_bytes | int ) * 0.9 ) | int }}
+ExecReload=/bin/kill -s QUIT $MAINPID && ExecStart=/usr/local/sbin/varnishd -P /var/varnish/varnish.pid -j unix,user=ec2-user  -a varnish=/var/run/varnish/varnish.sock -a 0.0.0.0:81 -f /opt/varnish/conf/default.vcl -s malloc,1024m
+#ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s QUIT $MAINPID
+TimeoutStopSec=5
+KillMode=mixed
+
+[Install]
+WantedBy=multi-user.target

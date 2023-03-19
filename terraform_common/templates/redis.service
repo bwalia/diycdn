@@ -1,0 +1,33 @@
+[Unit]
+Description=Redis Server
+#ConditionPathExists=/home/ec2-user/services
+#After=network.target
+
+[Service]
+Type=simple
+
+Restart=on-failure
+RestartSec=10
+#startLimitIntervalSec=60
+
+#WorkingDirectory=/home/ec2-user/
+#ExecStart=/usr/local/bin/redis-server /etc/redis.conf --nodaemonize  --name=redis.service
+ExecStart=/usr/local/bin/redis-server /etc/redis.conf
+ExecStop=/usr/bin/redis-shutdown
+#User=redis
+#Group=redis
+
+#ExecStopPost=/bin/rm -f /var/services-manager/services-manager.pid
+#ExecReload=/bin/kill -USR2 $MAINPID
+
+PermissionsStartOnly=true
+#ExecStartPre=/bin/mkdir -p /var/log/services-manager
+#ExecStartPre=/bin/chown syslog:adm /var/log/services-manager
+#ExecStartPre=/bin/chmod 755 /var/log/services-manager
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=redis
+
+
+[Install]
+WantedBy=multi-user.target

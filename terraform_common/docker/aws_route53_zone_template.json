@@ -1,0 +1,18 @@
+{
+    "Comment": "Update record to add new A record",
+    "Changes": [
+        {
+            "Action": "UPSERT",
+            "ResourceRecordSet": {
+                "Name": "cdn-pop-london-prod-X.DiyCDN.cloud.",
+                "Type": "A",
+                "TTL": 300,
+                "ResourceRecords": [
+                    {
+                        "Value": "0.0.0.0"
+                    }
+                ]
+            }
+        }
+    ]
+}

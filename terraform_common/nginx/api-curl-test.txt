@@ -1,0 +1,6 @@
+clear;export TOKEN=thisisunsafe
+curl --request PUT \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer ${TOKEN}" \
+--data '{"BASE64_Encoded_ConfigMap_Data"}' \
+http://3.10.209.246:8888/__api/configurations/nginx/service1.conf

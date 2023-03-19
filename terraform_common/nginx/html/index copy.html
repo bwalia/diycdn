@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to edgeone.co.uk PHP Web Server</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<br/><br/><br/><br/>
+<h2>Welcome to edgeone PHP Web Server.</h2>
+<p>If you see this page, the edgeone Web Server software platform is successfully installed and working. </p>
+<p>edgeone server is built on top of Nginx/Openresty/PHP7 with automation in mind! It has built in REST API for adding nginx server blocks configuration for each tenant easily and dynamically without any downtime.</p>
+<p>DATE ON SERVER: 10 Aug 20211</p>
+<p>DATE ON TIME: 23:21:42</p>
+<p>PHP modules compiled and loaded:</p>
+<?php
+print_r(get_loaded_extensions());
+?>
+<p>For edgeone API online documentation and support please refer to:
+<a href="//edgeone.co.uk">edgeone.co.uk - Getting started docs.</a>.<br/></p>
+
+<p><em>Thank you for flying edgeone.co.uk.</em></p>
+<p>Host: {{hostName}}</p>
+</body>
+</html>
