@@ -92,15 +92,15 @@ resource "aws_instance" "cdn-pop-london-a" {
     #     destination = "/tmp/php-fpm.conf"
     # }
 
-    # provisioner "file" {
-    #     source = "varnish"
-    #     destination = "/tmp/varnish"
-    # }
+    provisioner "file" {
+        source = "varnish"
+        destination = "/tmp/varnish"
+    }
 
-    # provisioner "file" {
-    #     source = "templates/varnish.service"
-    #     destination = "/tmp/varnish.service"
-    # }
+    provisioner "file" {
+        source = "templates/varnish.service"
+        destination = "/tmp/varnish.service"
+    }
 
     # Install update yum packages by executing bash script
     # services manager go app installation by executing bash script
